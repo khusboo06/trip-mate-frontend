@@ -23,7 +23,7 @@ export default function AddExpense({ tripId, onAdd }) {
         tripId,
         title,
         amount: Number(amount),
-        token,
+        //token,
       });
 
       // ✅ Update UI
