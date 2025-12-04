@@ -69,7 +69,7 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 import { connectSocket, disconnectSocket } from "../socket";
-import { setToken as applyApiToken } from "../api";  // ⭐ ADD THIS
+import { setToken as applyAxiosToken } from "../api";   // ⭐ IMPORTANT
 
 const AuthContext = createContext();
 
@@ -81,34 +81,25 @@ export function AuthProvider({ children }) {
 
   const [token, setToken] = useState(() => localStorage.getItem("token") || "");
 
-  /* --------------------------------------------------
-     ⭐ Apply token on app load (important on refresh)
-  -------------------------------------------------- */
-  useEffect(() => {
-    const saved = localStorage.getItem("token");
-    if (saved) {
-      applyApiToken(saved);  // ⭐ Makes Axios send Authorization header
-      connectSocket(saved);
-    }
-  }, []);
-
-  /* --------------------------------------------------
-     ⭐ Sync token changes + socket
-  -------------------------------------------------- */
+  // Sync token with socket + axios
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
-      applyApiToken(token);   // ⭐ CRITICAL FIX
+
+      // ⭐ Tell Axios to include this token in every request
+      applyAxiosToken(token);
+
       connectSocket(token);
     } else {
       localStorage.removeItem("token");
+
+      // ⭐ Remove token from Axios headers
+      applyAxiosToken("");
+
       disconnectSocket();
     }
   }, [token]);
 
-  /* --------------------------------------------------
-     ⭐ Sync user to localStorage
-  -------------------------------------------------- */
   useEffect(() => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
@@ -117,21 +108,25 @@ export function AuthProvider({ children }) {
     }
   }, [user]);
 
-  /* --------------------------------------------------
-     ⭐ LOGIN FIXED VERSION
-  -------------------------------------------------- */
   const login = (userData, jwtToken) => {
     setUser(userData);
     setToken(jwtToken);
-    applyApiToken(jwtToken);  // ⭐IMPORTANT
+
+    // ⭐ MUST: Add token to axios headers
+    applyAxiosToken(jwtToken);
   };
 
   const logout = () => {
     setUser(null);
     setToken("");
+
+    // ⭐ Remove token from axios headers
+    applyAxiosToken("");
+
     disconnectSocket();
     localStorage.removeItem("user");
     localStorage.removeItem("token");
+
     window.location.href = "/";
   };
 

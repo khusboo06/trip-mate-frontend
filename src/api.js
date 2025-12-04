@@ -113,10 +113,10 @@
 
 import axios from "axios";
 
-// Backend URL from env
+// 🔥 Use your deployed backend URL from .env
 const API_BASE = `${import.meta.env.VITE_BACKEND_URL}/api`;
 
-// Axios instance
+// Create axios instance
 const api = axios.create({
   baseURL: API_BASE,
   headers: {
@@ -124,7 +124,7 @@ const api = axios.create({
   },
 });
 
-// Set token globally for all API requests
+// ⭐ This function updates axios Authorization header
 export const setToken = (token) => {
   if (token) {
     api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -156,6 +156,7 @@ export const votePoll = (pollId, optionIndex) =>
 
 /* -------------------- MESSAGES -------------------- */
 export const getMessages = (tripId) => api.get(`/messages/${tripId}`);
+
 export const sendMessage = (data) => api.post("/messages", data);
 
 export default api;
