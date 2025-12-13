@@ -268,7 +268,7 @@ export default function TripDetail() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#1e293b] to-[#faf8f6] px-3 sm:px-6 py-16 mt-12 sm:mt-0 font-['Poppins'] relative">
+    <div className="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#1e293b] to-[#faf8f6] px-3 sm:px-6 py-16 mt-16 sm:mt-0 font-['Poppins'] relative">
       {/* 🔙 Mobile: only arrow icon (top-left) */}
       <button
         onClick={() => navigate("/dashboard")}
@@ -280,7 +280,7 @@ export default function TripDetail() {
       {/* 🔙 Desktop/Tablet: pill Back button (top-right) */}
       <button
         onClick={() => navigate("/dashboard")}
-        className="absolute top-0 right-6 hidden sm:flex items-center gap-2 bg-[#d4af37]/20 text-[#d4af37] hover:bg-[#d4af37]/30 px-4 py-1.5 rounded-full text-sm font-medium border border-[#d4af37]/40 backdrop-blur-md transition-all"
+        className="absolute top-2 right-6 hidden sm:flex items-center gap-2 bg-[#d4af37]/20 text-[#d4af37] hover:bg-[#d4af37]/30 px-4 py-1.5 rounded-full text-sm font-medium border border-[#d4af37]/40 backdrop-blur-md transition-all"
       >
         <ArrowLeftCircle size={18} />
         Back
