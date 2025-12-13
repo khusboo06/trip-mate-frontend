@@ -98,7 +98,7 @@ export default function Navbar() {
       
       {/* Mobile Dropdown */}
 {mobileOpen && (
-  <div className="md:hidden border-t border-[#d4af37]/20 bg-[#020617]/95 backdrop-blur-xl">
+  <div className="md:hidden border-t border-[#d4af37]/20 bg-[#020617]/95 backdrop-blur-xl z-[1000] relative">
     <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm">
 
       {isHomePage && (
