@@ -35,7 +35,7 @@ export default function ProfileDropdown() {
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative z-[9999]" ref={dropdownRef}>
       {/* 👤 Avatar Button */}
       <div
         onClick={() => setOpen(!open)}
