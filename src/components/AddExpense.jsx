@@ -1,7 +1,9 @@
 
 
 import { useState } from "react";
-import { addExpense } from "../api";
+// import { addExpense } from "../api";
+import { addExpense, setToken } from "../api";
+
 
 export default function AddExpense({ tripId, onAdd }) {
   const [title, setTitle] = useState("");
