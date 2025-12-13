@@ -7,34 +7,65 @@ export default function AddExpense({ tripId, onAdd }) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     // ✅ Get token from localStorage
+  //     const token = localStorage.getItem("token");
+  //     if (!token) {
+  //       alert("Please login first.");
+  //       return;
+  //     }
+  //     console.log("Sending expense:", { tripId, title, amount, token });
+
+  //     // ✅ Send API request
+  //     const res = await addExpense({
+  //       tripId,
+  //       title,
+  //       amount: Number(amount),
+  //       //token,
+  //     });
+
+  //     // ✅ Update UI
+  //     onAdd(res.data);
+  //     setTitle("");
+  //     setAmount("");
+  //   } catch (err) {
+  //     console.error("Error adding expense:", err);
+  //     alert(err.response?.data?.message || "Failed to add expense");
+  //   }
+  // };
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // ✅ Get token from localStorage
-      const token = localStorage.getItem("token");
-      if (!token) {
-        alert("Please login first.");
-        return;
-      }
-      console.log("Sending expense:", { tripId, title, amount, token });
+  e.preventDefault();
 
-      // ✅ Send API request
-      const res = await addExpense({
-        tripId,
-        title,
-        amount: Number(amount),
-        //token,
-      });
-
-      // ✅ Update UI
-      onAdd(res.data);
-      setTitle("");
-      setAmount("");
-    } catch (err) {
-      console.error("Error adding expense:", err);
-      alert(err.response?.data?.message || "Failed to add expense");
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Please login first.");
+      return;
     }
-  };
+
+    // ⭐ Add this line
+    setToken(token);
+
+    const res = await addExpense({
+      tripId,
+      title,
+      amount: Number(amount),
+    });
+
+    onAdd(res.data);
+    setTitle("");
+    setAmount("");
+  } catch (err) {
+    console.error("Error adding expense:", err);
+    alert(err.response?.data?.message || "Failed to add expense");
+  }
+};
+
+  
 
   return (
     <form
