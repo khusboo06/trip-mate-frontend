@@ -280,7 +280,7 @@ export default function TripDetail() {
       {/* 🔙 Desktop/Tablet: pill Back button (top-right) */}
       <button
         onClick={() => navigate("/dashboard")}
-        className="absolute top-10 right-6 hidden sm:flex items-center gap-2 bg-[#d4af37]/20 text-[#d4af37] hover:bg-[#d4af37]/30 px-4 py-1.5 rounded-full text-sm font-medium border border-[#d4af37]/40 backdrop-blur-md transition-all"
+        className="absolute top-14 right-6 hidden sm:flex items-center gap-2 bg-[#d4af37]/20 text-[#d4af37] hover:bg-[#d4af37]/30 px-4 py-1.5 rounded-full text-sm font-medium border border-[#d4af37]/40 backdrop-blur-md transition-all"
       >
         <ArrowLeftCircle size={18} />
         Back
