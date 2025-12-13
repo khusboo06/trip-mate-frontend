@@ -132,6 +132,7 @@ export default function Navbar() {
                   onClick={() => {
                     closeMobile();
                     logout();
+                    window.location.href = "/";
                   }}
                   className="py-1 text-red-400 hover:text-red-300 transition-colors text-left"
                 >
