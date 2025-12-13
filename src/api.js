@@ -146,23 +146,35 @@ export const createTrip = (data) => api.post("/trips", data);
 // export const addExpense = ({ tripId, title, amount }) =>
 //   api.post("/expenses", { tripId, title, amount });
 
+// export const getExpenses = (tripId) => api.get(`/expenses/${tripId}`);
+
+
 /* -------------------- EXPENSES -------------------- */
 export const addExpense = ({ tripId, title, amount }) => {
-  const token = localStorage.getItem("token"); // ⭐ GET TOKEN
+  const token = localStorage.getItem("token");
 
   return api.post(
     "/expenses",
     { tripId, title, amount },
     {
       headers: {
-        Authorization: `Bearer ${token}`, // ⭐ SEND TOKEN
+        Authorization: `Bearer ${token}`,
       },
     }
   );
 };
 
+export const getExpenses = (tripId) => {
+  const token = localStorage.getItem("token");
 
-export const getExpenses = (tripId) => api.get(`/expenses/${tripId}`);
+  return api.get(`/expenses/${tripId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+};
+
 
 /* -------------------- POLLS -------------------- */
 export const createPoll = (data) => api.post("/polls", data);
