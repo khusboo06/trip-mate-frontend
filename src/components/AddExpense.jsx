@@ -42,12 +42,13 @@ export default function AddExpense({ tripId, onAdd }) {
 
   try {
     const token = localStorage.getItem("token");
+
     if (!token) {
       alert("Please login first.");
       return;
     }
 
-    // ⭐ Add this line
+    // ⭐ THIS MAKES AXIOS SEND THE TOKEN
     setToken(token);
 
     const res = await addExpense({
