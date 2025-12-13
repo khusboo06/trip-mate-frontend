@@ -268,7 +268,7 @@ export default function TripDetail() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#1e293b] to-[#faf8f6] px-3 sm:px-6 py-16 mt-26 sm:mt-0 font-['Poppins'] relative">
+    <div className="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#1e293b] to-[#faf8f6] px-3 sm:px-6 py-16 mt-14 sm:mt-0 font-['Poppins'] relative">
       {/* 🔙 Mobile: only arrow icon (top-left) */}
       <button
         onClick={() => navigate("/dashboard")}
