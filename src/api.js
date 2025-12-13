@@ -143,8 +143,24 @@ export const getTripById = (id) => api.get(`/trips/${id}`);
 export const createTrip = (data) => api.post("/trips", data);
 
 /* -------------------- EXPENSES -------------------- */
-export const addExpense = ({ tripId, title, amount }) =>
-  api.post("/expenses", { tripId, title, amount });
+// export const addExpense = ({ tripId, title, amount }) =>
+//   api.post("/expenses", { tripId, title, amount });
+
+/* -------------------- EXPENSES -------------------- */
+export const addExpense = ({ tripId, title, amount }) => {
+  const token = localStorage.getItem("token"); // ⭐ GET TOKEN
+
+  return api.post(
+    "/expenses",
+    { tripId, title, amount },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`, // ⭐ SEND TOKEN
+      },
+    }
+  );
+};
+
 
 export const getExpenses = (tripId) => api.get(`/expenses/${tripId}`);
 
