@@ -42,7 +42,7 @@ export default function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6 text-[0.95rem] font-medium">
-          
+
           {isHomePage && (
             <Link
               to="/contact"
@@ -95,62 +95,82 @@ export default function Navbar() {
         </button>
       </div>
 
-      
+
       {/* Mobile Dropdown */}
-{mobileOpen && (
-  <div className="md:hidden border-t border-[#d4af37]/20 bg-[#020617]/95 backdrop-blur-xl relative z-10">
-    <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm">
+      {mobileOpen && (
+        <div className="md:hidden border-t border-[#d4af37]/20 bg-[#020617]/95 backdrop-blur-xl relative z-10">
+          <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm">
 
-      {isHomePage && (
-        <Link
-          to="/contact"
-          onClick={closeMobile}
-          className="py-1 text-[#f9f7e8]/90 hover:text-[#d4af37] transition-colors"
-        >
-          Contact Us
-        </Link>
+            {isHomePage && (
+              <Link
+                to="/contact"
+                onClick={closeMobile}
+                className="py-1 text-[#f9f7e8]/90 hover:text-[#d4af37] transition-colors"
+              >
+                Contact Us
+              </Link>
+            )}
+
+            {user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  onClick={closeMobile}
+                  className="py-1 text-[#f9f7e8]/90 hover:text-[#d4af37] transition-colors"
+                >
+                  Dashboard
+                </Link>
+
+                <Link
+                  to="/profile"
+                  onClick={closeMobile}
+                  className="py-1 text-[#f9f7e8]/90 hover:text-[#d4af37] transition-colors"
+                >
+                  Profile
+                </Link>
+                <button
+                  onClick={() => {
+                    closeMobile();
+                    logout();
+                  }}
+                  className="py-1 text-red-400 hover:text-red-300 transition-colors text-left"
+                >
+                  Logout
+                </button>
+
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  onClick={closeMobile}
+                  className="py-1 text-[#f9f7e8]/90 hover:text-[#d4af37] transition-colors"
+                >
+                  Login
+                </Link>
+
+                <Link
+                  to="/register"
+                  onClick={closeMobile}
+                  className="py-1 text-[#f9f7e8]/90 hover:text-[#d4af37] transition-colors"
+                >
+                  Register
+                </Link>
+                <button
+                  onClick={() => {
+                    closeMobile();
+                    logout();
+                  }}
+                  className="py-1 text-red-400 hover:text-red-300 transition-colors text-left"
+                >
+                  Logout
+                </button>
+
+              </>
+            )}
+          </div>
+        </div>
       )}
-
-      {user ? (
-        <>
-          <Link
-            to="/dashboard"
-            onClick={closeMobile}
-            className="py-1 text-[#f9f7e8]/90 hover:text-[#d4af37] transition-colors"
-          >
-            Dashboard
-          </Link>
-
-          <Link
-            to="/profile"
-            onClick={closeMobile}
-            className="py-1 text-[#f9f7e8]/90 hover:text-[#d4af37] transition-colors"
-          >
-            Profile
-          </Link>
-        </>
-      ) : (
-        <>
-          <Link
-            to="/login"
-            onClick={closeMobile}
-            className="py-1 text-[#f9f7e8]/90 hover:text-[#d4af37] transition-colors"
-          >
-            Login
-          </Link>
-
-          <Link
-            to="/register"
-            onClick={closeMobile}
-            className="py-1 text-[#f9f7e8]/90 hover:text-[#d4af37] transition-colors"
-          >
-            Register
-          </Link>
-        </>
-      )}
-    </div>
-  </div>
-)}
 
 
       <div
