@@ -46,7 +46,7 @@ Planning a group trip is often chaotic due to:
 | File Uploads   | Multer, Cloudinary                        |
 | Email          | Nodemailer (OTP & invitations)            |
 | APIs           | OpenWeather API, OpenAI API               |
-| Deployment     | Vercel (Frontend), Node Hosting (Backend) |
+| Deployment     | Vercel (Frontend), Render (Backend) |
 
 ---
 
