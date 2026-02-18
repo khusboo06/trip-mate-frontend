@@ -453,7 +453,9 @@ export default function GalleryPage() {
                 className="relative group rounded-2xl overflow-hidden border border-[#d4af37]/30 bg-gradient-to-b from-[#1e293b]/80 to-[#0f172a]/90 shadow-lg hover:shadow-[#d4af37]/30 transition-all duration-300"
               >
                 <img
-                  src={`${BACKEND_URL}${img.url}`}
+                  // src={`${BACKEND_URL}${img.url}`}
+
+                  src={img.url}
                   alt="Trip"
                   className="w-full h-56 sm:h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
